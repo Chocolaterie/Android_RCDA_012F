@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="headerTitle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:paddingTop">120dp</item>
+        <item name="android:paddingBottom">120dp</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/primary_title_color</item>
+    </style>
+
+    <style name="primaryBtnStyle">
+        <item name="android:background">@drawable/primary_btn</item>
+        <item name="android:textColor">@color/primary_title_color</item>
+    </style>
+</resources>
