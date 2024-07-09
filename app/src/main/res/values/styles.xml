@@ -9,7 +9,7 @@
         <item name="android:textColor">@color/primary_title_color</item>
     </style>
 
-    <style name="primaryBtnStyle">
+    <style name="primaryBtnStyle" parent="android:Widget.Material.Button">
         <item name="android:background">@drawable/primary_btn</item>
         <item name="android:textColor">@color/primary_title_color</item>
     </style>

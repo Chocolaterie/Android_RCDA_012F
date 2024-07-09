@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Android_TP" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Android_TP" parent="android:Theme.Material.Light.NoActionBar">
+
+<!--        Surcharger le style par défaut de tout les boutons-->
+        <item name="android:buttonStyle">@style/primaryBtnStyle</item>
+
+    </style>
 </resources>
