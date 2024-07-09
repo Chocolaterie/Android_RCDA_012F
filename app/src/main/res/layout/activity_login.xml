@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/mobile_background">
 
 <!--    Un bloc qui contient les elements du formulaire -->
     <LinearLayout
@@ -18,6 +19,7 @@
             android:textAlignment="center"
             android:paddingVertical="120dp"
             android:textSize="32sp"
+            android:textColor="#091D36"
             android:text="Login"
             />
 
@@ -39,6 +41,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/primary_btn"
+            android:textColor="#091D36"
             android:text="Submit"
             />
 
