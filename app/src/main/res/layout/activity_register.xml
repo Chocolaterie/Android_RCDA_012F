@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layoutForm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -31,46 +32,54 @@
             android:gravity="center_vertical">
 
             <EditText
+                android:id="@+id/edtPseudo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Pseudo" />
 
             <EditText
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email" />
 
             <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword" />
 
             <EditText
+                android:id="@+id/edtPasswordConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password Confirmation"
                 android:inputType="textPassword" />
 
             <EditText
+                android:id="@+id/edtCityCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="City Code"
                 android:inputType="textPostalAddress" />
 
             <EditText
+                android:id="@+id/edtCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="City"
                 android:inputType="textPostalAddress" />
 
             <EditText
+                android:id="@+id/edtPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
                 android:inputType="phone" />
 
             <Button
+                android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign Up" />

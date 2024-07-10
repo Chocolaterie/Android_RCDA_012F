@@ -1,7 +1,9 @@
 package com.example.android_tp
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,6 +22,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login);
+
+        // Quand je clique sur le bouton se connecter
+        val btnLogin = findViewById<Button>(R.id.btnLogin);
+        btnLogin.setOnClickListener {
+            // afficher la popup
+            DialogHelper.showDialog(this, "Vous êtes connecté(e) avec succès");
+        }
 
         // Quand je clique sur s'inscrire
         val tvSignUp = findViewById<TextView>(R.id.tvSignUp);
