@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    Design par défaut de la forme-->
-    <item>
+    <item android:state_pressed="true" >
         <shape android:shape="rectangle">
-<!--            Sans dégradé-->
-<!--            <solid android:color="#FF0000"/>-->
+            <!--            Sans dégradé-->
+            <!--            <solid android:color="#FF0000"/>-->
 
-<!--            Fond dégradé-->
+            <!--            Fond dégradé-->
             <gradient
                 android:startColor="#FEB9F2"
                 android:endColor="#A1C1FE"
                 android:angle="0"
                 />
 
-<!--            Outline/Bordure drawed-->
+            <!--            Outline/Bordure drawed-->
+            <stroke
+                android:width="4dp"
+                android:color="#EEFFFF"
+                />
+
+            <!--            Border Radius-->
+            <corners android:radius="40dp" />
+
+        </shape>
+    </item>
+
+    <!--    Design par défaut de la forme-->
+    <item>
+        <shape android:shape="rectangle">
+            <!--            Sans dégradé-->
+            <!--            <solid android:color="#FF0000"/>-->
+
+            <!--            Fond dégradé-->
+            <gradient
+                android:startColor="#AAFEB9F2"
+                android:endColor="#AAA1C1FE"
+                android:angle="0"
+                />
+
+            <!--            Outline/Bordure drawed-->
             <stroke
                 android:width="4dp"
                 android:color="#55FFFFFF"
                 />
 
-<!--            Border Radius-->
+            <!--            Border Radius-->
             <corners android:radius="40dp" />
 
         </shape>

@@ -1,6 +1,8 @@
 package com.example.android_tp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +20,22 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login);
-        //setContentView(R.layout.activity_register);
+
+        // Quand je clique sur s'inscrire
+        val tvSignUp = findViewById<TextView>(R.id.tvSignUp);
+        tvSignUp.setOnClickListener {
+            // Ouvrir la page inscription (SignUpActivity)
+            val intent = Intent(this, SignUpActivity::class.java);
+            startActivity(intent);
+        }
+
+        // Quand je clique sur oublié mon mot de passe
+        val tvForgetPassword = findViewById<TextView>(R.id.tvForgetPassword);
+        tvForgetPassword.setOnClickListener {
+            // Ouvrir la page reset password (ResetPasswordActivity)
+            val intent = Intent(this, ResetPasswordActivity::class.java);
+            startActivity(intent);
+        }
+
     }
 }

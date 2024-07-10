@@ -34,6 +34,26 @@
             android:hint="Password"
             />
 
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/sign_up_link"
+            />
+
+        <TextView
+            android:id="@+id/tvForgetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/forget_password_link"
+            />
+
         <!--    Bouton Submit-->
         <Button
             android:layout_width="match_parent"
