@@ -4,23 +4,29 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.ComponentActivity
+import androidx.databinding.DataBindingUtil
+import com.example.android_tp.auth.ResetPasswordViewModel
+import com.example.android_tp.databinding.ActivityResetPasswordBinding
 
 class ResetPasswordActivity : ComponentActivity() {
+
+    lateinit var viewBinding: ActivityResetPasswordBinding;
+    lateinit var resetPasswordViewModel: ResetPasswordViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Charger la vue
-        setContentView(R.layout.activity_reset_password);
+        viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_reset_password);
+
+        // Associer le view model dans la vue
+        resetPasswordViewModel = ResetPasswordViewModel();
+        viewBinding.resetPasswordViewModel = resetPasswordViewModel;
 
         // Quand je clique sur le bouton se connecter
-        val btnSendLink = findViewById<Button>(R.id.btnSendLink);
-        btnSendLink.setOnClickListener {
-            // récupérer l'email
-            val email = findViewById<EditText>(R.id.edtEmail).text.toString();
-
+        viewBinding.btnSendLink.setOnClickListener {
             // afficher la popup
-            DialogHelper.showDialog(this, "Email : ${email}");
+            DialogHelper.showDialog(this, "Email : ${resetPasswordViewModel.email.value!!}");
         }
     }
 }

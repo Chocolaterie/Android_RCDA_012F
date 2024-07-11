@@ -68,7 +68,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password Confirmation"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:text="@={signUpViewModel.passwordConfirmation}"
+                    />
 
                 <EditText
                     android:id="@+id/edtCityCode"
@@ -93,7 +95,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone Number"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:text="0"
+                    />
 
                 <Button
                     android:id="@+id/btnSignUp"
