@@ -18,16 +18,30 @@ class SignUpActivity : ComponentActivity() {
         // Quand je clique sur le bouton se connecter
         val btnSignUp = findViewById<Button>(R.id.btnSignUp);
         btnSignUp.setOnClickListener {
-            // récupérer l'email
+            // V1 : Correction attendu
             val email = findViewById<EditText>(R.id.edtEmail).text.toString();
             val pseudo = findViewById<EditText>(R.id.edtPseudo).text.toString();
-
-            // For each TODO:  demain
-//            val parent= findViewById<LinearLayout>(R.id.layoutForm);
-//            parent.children
-            // afficher la popup
+            // etc..
             DialogHelper.showDialog(this, "Email : ${email}" +
                     "\nPseudo : ${pseudo}");
+
+            // BONUS
+            // Version for each
+            /*
+            val parent = findViewById<LinearLayout>(R.id.layoutForm);
+            var message = "";
+            for (i in 0 until parent.childCount){
+                // récuperer le composant par son index
+                val view = parent.getChildAt(i);
+
+                // tester le cast en toute sécurité et en plus dans le if le view devient un type EditText
+                if (view is EditText) {
+                    message += "${view.text.toString()}\n";
+                }
+            }
+            // afficher la popup
+            DialogHelper.showDialog(this, message);
+            */
         }
     }
 }

@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/layoutForm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -25,6 +24,7 @@
 <!--        Bloc uniquement pour les champs (qui prend toute la place restante en hauteur)-->
 <!--      Les enfants sont alignés verticalement au centre-->
         <LinearLayout
+            android:id="@+id/layoutForm"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
