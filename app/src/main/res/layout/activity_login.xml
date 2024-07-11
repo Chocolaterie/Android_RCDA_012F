@@ -1,67 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/mobile_background">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    Un bloc qui contient les elements du formulaire -->
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.example.android_tp.auth.LoginViewModel" />
+    </data>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="40dp">
+        android:layout_height="match_parent"
+        android:background="@drawable/mobile_background">
 
-        <!--    Titre-->
-        <TextView
+    <!--    Un bloc qui contient les elements du formulaire -->
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/headerTitle"
-            android:text="Login"
-            />
+            android:padding="40dp">
 
-        <!--    Champ Email -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            />
+            <!--    Titre-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/headerTitle"
+                android:text="Login"
+                />
 
-        <!--    Champ Mot de passe -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            />
+            <!--    Champ Email -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:text="@={loginViewModel.person.email}"
+                />
 
-        <TextView
-            android:id="@+id/tvSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:padding="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/sign_up_link"
-            />
+            <!--    Champ Mot de passe -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:text="@={loginViewModel.person.password}"
+                />
 
-        <TextView
-            android:id="@+id/tvForgetPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:padding="10dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="@string/forget_password_link"
-            />
+            <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/sign_up_link"
+                />
 
-        <!--    Bouton Submit-->
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            />
+            <TextView
+                android:id="@+id/tvForgetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/forget_password_link"
+                />
+
+            <!--    Bouton Submit-->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</layout>
