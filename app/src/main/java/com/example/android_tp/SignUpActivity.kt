@@ -6,42 +6,34 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.activity.ComponentActivity
 import androidx.core.view.children
+import androidx.databinding.DataBindingUtil
+import com.example.android_tp.auth.SignUpViewModel
+import com.example.android_tp.databinding.ActivityRegisterBinding
 
 class SignUpActivity : ComponentActivity() {
+
+    lateinit var viewBinding: ActivityRegisterBinding;
+    lateinit var signUpViewModel: SignUpViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Charger le rendu XML
-        setContentView(R.layout.activity_register)
+        // Charger le rendu XML en mode DataBinding
+        viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_register)
+
+        // Associer le view model
+        signUpViewModel = SignUpViewModel();
+        viewBinding.signUpViewModel = signUpViewModel;
 
         // Quand je clique sur le bouton se connecter
-        val btnSignUp = findViewById<Button>(R.id.btnSignUp);
-        btnSignUp.setOnClickListener {
-            // V1 : Correction attendu
-            val email = findViewById<EditText>(R.id.edtEmail).text.toString();
-            val pseudo = findViewById<EditText>(R.id.edtPseudo).text.toString();
-            // etc..
-            DialogHelper.showDialog(this, "Email : ${email}" +
-                    "\nPseudo : ${pseudo}");
-
-            // BONUS
-            // Version for each
-            /*
-            val parent = findViewById<LinearLayout>(R.id.layoutForm);
-            var message = "";
-            for (i in 0 until parent.childCount){
-                // récuperer le composant par son index
-                val view = parent.getChildAt(i);
-
-                // tester le cast en toute sécurité et en plus dans le if le view devient un type EditText
-                if (view is EditText) {
-                    message += "${view.text.toString()}\n";
-                }
-            }
-            // afficher la popup
-            DialogHelper.showDialog(this, message);
-            */
+        viewBinding.btnSignUp.setOnClickListener {
+            DialogHelper.showDialog(
+                this, "Email : ${signUpViewModel.person.value!!.email}" +
+                        "\nPseudo : ${signUpViewModel.person.value!!.pseudo}" +
+                        "\nPassword : ${signUpViewModel.person.value!!.password}" +
+                        "\nCity Code : ${signUpViewModel.person.value!!.cityCode}" +
+                        "\nCity : ${signUpViewModel.person.value!!.city}"
+            );
         }
     }
 }

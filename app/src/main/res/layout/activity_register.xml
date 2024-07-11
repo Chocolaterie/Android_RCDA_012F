@@ -1,90 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/mobile_background"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="signUpViewModel"
+            type="com.example.android_tp.auth.SignUpViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="40dp">
+        android:background="@drawable/mobile_background"
+        android:orientation="vertical">
 
-<!--        Titre -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/headerTitle"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:text="Sign Up"
-            />
-
-<!--        Bloc uniquement pour les champs (qui prend toute la place restante en hauteur)-->
-<!--      Les enfants sont alignés verticalement au centre-->
         <LinearLayout
-            android:id="@+id/layoutForm"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="40dp">
 
-            <EditText
-                android:id="@+id/edtPseudo"
+            <!--        Titre -->
+            <TextView
+                style="@style/headerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pseudo" />
-
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email" />
-
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:id="@+id/edtPasswordConfirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password Confirmation"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:id="@+id/edtCityCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="City Code"
-                android:inputType="textPostalAddress" />
-
-            <EditText
-                android:id="@+id/edtCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="City"
-                android:inputType="textPostalAddress" />
-
-            <EditText
-                android:id="@+id/edtPhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone Number"
-                android:inputType="phone" />
-
-            <Button
-                android:id="@+id/btnSignUp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:text="Sign Up" />
+
+            <!--        Bloc uniquement pour les champs (qui prend toute la place restante en hauteur)-->
+            <!--      Les enfants sont alignés verticalement au centre-->
+            <LinearLayout
+                android:id="@+id/layoutForm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edtPseudo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pseudo"
+                    android:text="@={signUpViewModel.person.pseudo}"
+                    />
+
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:text="@={signUpViewModel.person.email}"
+                    />
+
+                <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:text="@={signUpViewModel.person.password}"
+                    />
+
+                <EditText
+                    android:id="@+id/edtPasswordConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password Confirmation"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/edtCityCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="City Code"
+                    android:inputType="textPostalAddress"
+                    android:text="@={signUpViewModel.person.cityCode}"
+                    />
+
+                <EditText
+                    android:id="@+id/edtCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="City"
+                    android:inputType="textPostalAddress"
+                    android:text="@={signUpViewModel.person.city}"
+                    />
+
+                <EditText
+                    android:id="@+id/edtPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:inputType="phone" />
+
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Up" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</layout>
