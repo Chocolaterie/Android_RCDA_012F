@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 
 class SignUpViewModel : ViewModel() {
 
+    // la personne qui va contenir les données d'inscription
     var person = MutableLiveData<Person>(Person());
-    var passwordConfirmation = "";
+
+    var passwordConfirmation = MutableLiveData<String>();
 }

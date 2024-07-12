@@ -6,4 +6,5 @@ import androidx.lifecycle.ViewModel
 class ResetPasswordViewModel : ViewModel() {
 
     var email = MutableLiveData<String>("");
+
 }

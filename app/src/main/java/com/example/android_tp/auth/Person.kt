@@ -1,6 +1,5 @@
 package com.example.android_tp.auth
 
-class Person(var email : String = "", var password : String = "",
-             var pseudo : String = "", var cityCode : String = "" ,
-             var city : String = "", var phone: Int=0) {
+class Person(var email : String = "", var password: String = "",
+    var pseudo : String = "", var city : String = "", var cityCode : String = "") {
 }

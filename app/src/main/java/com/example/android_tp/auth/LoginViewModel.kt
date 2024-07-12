@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
-
-    var person = MutableLiveData<Person>(Person());
+    // Valeur exploitable dans le viewmodel
+    // Dans le cadre de Login : Les identifiants stockés dans la classe Person
+    var person = MutableLiveData<Person>(Person())
 }
