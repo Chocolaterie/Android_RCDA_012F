@@ -3,12 +3,14 @@ package com.example.android_tp.movie
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.example.android_tp.R
 import com.example.android_tp.databinding.ActivityListMovieBinding
 
 class ListMovieActivity : ComponentActivity() {
 
-    lateinit var viewBinding: ActivityListMovieBinding
+    lateinit var viewBinding: ActivityListMovieBinding;
+    lateinit var moviesViewModel: MoviesViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,20 +18,30 @@ class ListMovieActivity : ComponentActivity() {
         // Charger la vue en mode DataBinding
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_list_movie)
 
-        // Liste de films
-        val movies = listOf(
-            Movie(1, "Teletubbies", "Best serie ever", 1995),
-            Movie(2, "MyLittlePoney", "Stylé en vrai", 1995),
-            Movie(3, "Manège enchanté", "Pour les grands", 1995),
-            Movie(4, "DB GT", "La moustache de V", 1995),
-            Movie(5, "Oui !Oui !", "Y'a un ECF ?", 1998),
-        );
+        // Instancer mon view model
+        moviesViewModel = MoviesViewModel();
 
-        // Instancier l'adpateur personnalisé
-        val adapter = MovieAdapter(this, movies);
+        // Ecouter les changements des films dans le viewmodel
+        moviesViewModel.movies.observe(this, Observer {
+            // Instancier l'adpateur personnalisé
+            val adapter = MovieAdapter(this,  moviesViewModel.movies.value!!);
 
-        // Afficher la liste avec les données
-        // -- associer l'adapter dans la listeview
-        viewBinding.lvMovies.adapter = adapter;
+            // Afficher la liste avec les données
+            // -- associer l'adapter dans la listeview
+            viewBinding.lvMovies.adapter = adapter;
+        })
+
+        // Quand clique boutton rappeler l'api
+        viewBinding.btnCallApi.setOnClickListener {
+            // nettoyer la liste view (supprimer les elements)
+            val adapter = MovieAdapter(this,  listOf());
+            viewBinding.lvMovies.adapter = adapter;
+
+            // appel api
+            moviesViewModel.syncMovies();
+        }
+
+        // Lance appel API
+        moviesViewModel.syncMovies();
     }
 }
