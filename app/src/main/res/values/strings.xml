@@ -3,4 +3,5 @@
 
     <string name="sign_up_link"><u>Pas encore inscrit(e) ? Cliquez ici</u></string>
     <string name="forget_password_link"><u>J\'ai oublié mon mot de passe</u></string>
+    <string name="title_activity_login_compose">LoginComposeActivity</string>
 </resources>
