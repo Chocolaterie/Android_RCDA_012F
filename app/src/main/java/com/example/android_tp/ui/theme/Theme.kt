@@ -1,12 +1,14 @@
 package com.example.android_tp.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,6 +16,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -24,11 +27,15 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.UiComposable
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.android_tp.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -80,7 +87,7 @@ fun ENITextField(labelText: String) {
         onValueChange = { },
         label = { Text(text = labelText) },
         colors = TextFieldDefaults.colors(
-            unfocusedContainerColor = Color(0x22000000),
+            unfocusedContainerColor = Color(0x88FFFFFF),
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
 
@@ -88,6 +95,7 @@ fun ENITextField(labelText: String) {
         shape = RoundedCornerShape(40.dp)
     )
 }
+
 @Composable
 fun GradientButton(modifier: Modifier, labelText: String) {
     Button(
@@ -101,6 +109,32 @@ fun GradientButton(modifier: Modifier, labelText: String) {
         Box (modifier = Modifier.background(primaryGradientBrush).fillMaxWidth().padding(vertical = 15.dp),
             contentAlignment = Alignment.Center){
             Text(text = labelText)
+        }
+    }
+}
+
+@Composable
+fun TemplateFormPage(content: @Composable () -> Unit) {
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Box(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.mobile_background),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Column(
+                modifier = Modifier
+                    .padding(40.dp)
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                content()
+            }
         }
     }
 }

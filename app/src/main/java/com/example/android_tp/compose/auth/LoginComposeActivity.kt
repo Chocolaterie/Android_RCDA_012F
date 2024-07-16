@@ -1,19 +1,23 @@
 package com.example.android_tp.compose.auth
 
 import android.os.Bundle
+import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -32,13 +36,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.android_tp.R
 import com.example.android_tp.ui.theme.Android_TPTheme
 import com.example.android_tp.ui.theme.ENITextField
 import com.example.android_tp.ui.theme.GradientButton
 import com.example.android_tp.ui.theme.GradientOutlinedButton
+import com.example.android_tp.ui.theme.TemplateFormPage
 
 class LoginComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,20 +61,67 @@ class LoginComposeActivity : ComponentActivity() {
     }
 }
 
+/*
+@Composable
+fun LoginContentPageGenerique() {
+    TemplateFormPage {
+        Spacer(modifier = Modifier.padding(top = 40.dp))
+        Image(
+            painter = painterResource(id = R.drawable.profile_user),
+            contentDescription = "",
+            modifier = Modifier.size(80.dp)
+        )
+        Text(
+            text = "Please be careful when you enter credentials in the login page",
+            textAlign = TextAlign.Center,
+            color = Color.White,
+            modifier = Modifier.padding(top = 40.dp)
+        )
+        Spacer(modifier = Modifier.padding(vertical = 40.dp))
+        ENITextField(labelText = "Email")
+        ENITextField(labelText = "Password")
+        GradientButton(labelText = "Login", modifier = Modifier.padding(top = 10.dp))
+    }
+}
+*/
+
 @Composable
 fun LoginContentPage() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        Column(
+        Box(
             modifier = Modifier
-                .padding(innerPadding.calculateTopPadding() + 40.dp)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .padding(innerPadding)
+                .fillMaxSize()
         ) {
-            Text(text = "Login", fontSize = 40.sp, modifier = Modifier.padding(top = 80.dp))
-            Spacer(modifier = Modifier.padding(vertical = 80.dp))
-            ENITextField(labelText = "Email")
-            ENITextField(labelText = "Password")
-            GradientButton(labelText = "Login", modifier = Modifier.padding(top= 10.dp))
+            Image(
+                painter = painterResource(id = R.drawable.mobile_background),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+            Column(
+                modifier = Modifier
+                    .padding(40.dp)
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.padding(top = 40.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.profile_user),
+                    contentDescription = "",
+                    modifier = Modifier.size(80.dp)
+                )
+                Text(
+                    text = "Please be careful when you enter credentials in the login page",
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    modifier = Modifier.padding(top = 40.dp)
+                )
+                Spacer(modifier = Modifier.padding(vertical = 40.dp))
+                ENITextField(labelText = "Email")
+                ENITextField(labelText = "Password")
+                GradientButton(labelText = "Login", modifier = Modifier.padding(top = 10.dp))
+            }
         }
     }
 }
