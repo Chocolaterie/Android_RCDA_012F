@@ -19,17 +19,17 @@
         <activity
             android:name=".compose.movie.ListMovieComposeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".compose.auth.LoginComposeActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_login_compose"
-            android:theme="@style/Theme.Android_TP" />
+            android:theme="@style/Theme.Android_TP" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".movie.ListMovieActivity"
             android:exported="true">

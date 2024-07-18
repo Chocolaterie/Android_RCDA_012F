@@ -78,13 +78,14 @@ fun GradientOutlinedButton() {
 }
 
 @Composable
-fun ENITextField(labelText: String) {
+fun ENITextField(labelText: String, value: String,
+                 onValueChange: (String) -> Unit) {
     TextField(
-        value = "",
+        value = value,
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 10.dp),
-        onValueChange = { },
+        onValueChange = onValueChange,
         label = { Text(text = labelText) },
         colors = TextFieldDefaults.colors(
             unfocusedContainerColor = Color(0x88FFFFFF),
@@ -97,15 +98,16 @@ fun ENITextField(labelText: String) {
 }
 
 @Composable
-fun GradientButton(modifier: Modifier, labelText: String) {
+fun GradientButton(onClick: () -> Unit, modifier: Modifier, labelText: String) {
     Button(
+        onClick = onClick,
         border = BorderStroke(3.dp, Color(0x77FFFFFF)),
         contentPadding = PaddingValues(),
         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(40.dp))
-            .background(Color.Transparent).then(modifier), onClick = {}) {
+            .background(Color.Transparent).then(modifier)) {
         Box (modifier = Modifier.background(primaryGradientBrush).fillMaxWidth().padding(vertical = 15.dp),
             contentAlignment = Alignment.Center){
             Text(text = labelText)

@@ -46,8 +46,8 @@ fun ResetPasswordContentPage() {
             modifier = Modifier.size(80.dp)
         )
         Spacer(modifier = Modifier.padding(vertical = 80.dp))
-        ENITextField(labelText = "Email")
-        GradientButton(labelText = "Send Link", modifier = Modifier.padding(top= 10.dp))
+        ENITextField(labelText = "Email", value = "Todo", onValueChange = {})
+        GradientButton(labelText = "Send Link", modifier = Modifier.padding(top= 10.dp), onClick = {})
     }
 }
 

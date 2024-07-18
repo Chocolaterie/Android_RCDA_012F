@@ -1,6 +1,7 @@
 package com.example.android_tp.compose.auth
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +28,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,6 +45,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android_tp.R
+import com.example.android_tp.auth.LoginComposeViewModel
 import com.example.android_tp.ui.theme.Android_TPTheme
 import com.example.android_tp.ui.theme.ENITextField
 import com.example.android_tp.ui.theme.GradientButton
@@ -50,43 +53,29 @@ import com.example.android_tp.ui.theme.GradientOutlinedButton
 import com.example.android_tp.ui.theme.TemplateFormPage
 
 class LoginComposeActivity : ComponentActivity() {
+
+    // Déclarer mon view model dans l'activity
+    lateinit var loginComposeViewModel: LoginComposeViewModel;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Instancier le view model
+        loginComposeViewModel = LoginComposeViewModel();
+
         enableEdgeToEdge()
         setContent {
             Android_TPTheme {
-                LoginContentPage()
+                LoginContentPage(loginComposeViewModel)
             }
         }
     }
 }
 
-/*
 @Composable
-fun LoginContentPageGenerique() {
-    TemplateFormPage {
-        Spacer(modifier = Modifier.padding(top = 40.dp))
-        Image(
-            painter = painterResource(id = R.drawable.profile_user),
-            contentDescription = "",
-            modifier = Modifier.size(80.dp)
-        )
-        Text(
-            text = "Please be careful when you enter credentials in the login page",
-            textAlign = TextAlign.Center,
-            color = Color.White,
-            modifier = Modifier.padding(top = 40.dp)
-        )
-        Spacer(modifier = Modifier.padding(vertical = 40.dp))
-        ENITextField(labelText = "Email")
-        ENITextField(labelText = "Password")
-        GradientButton(labelText = "Login", modifier = Modifier.padding(top = 10.dp))
-    }
-}
-*/
+fun LoginContentPage(loginComposeViewModel: LoginComposeViewModel) {
+    val loginRequest by loginComposeViewModel.loginRequest.collectAsState()
 
-@Composable
-fun LoginContentPage() {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Box(
             modifier = Modifier
@@ -118,9 +107,26 @@ fun LoginContentPage() {
                     modifier = Modifier.padding(top = 40.dp)
                 )
                 Spacer(modifier = Modifier.padding(vertical = 40.dp))
-                ENITextField(labelText = "Email")
-                ENITextField(labelText = "Password")
-                GradientButton(labelText = "Login", modifier = Modifier.padding(top = 10.dp))
+                ENITextField(value = loginRequest.email, onValueChange = {
+                    loginComposeViewModel.loginRequest.value =
+                        loginComposeViewModel.loginRequest.value.copy(email = it)
+                }, labelText = "Email")
+                ENITextField(value = loginRequest.password,
+                    onValueChange = {
+                        loginComposeViewModel.loginRequest.value =
+                            loginComposeViewModel.loginRequest.value.copy(password = it)
+                    }, labelText = "Password"
+                )
+                GradientButton(
+                    labelText = "Login",
+                    modifier = Modifier.padding(top = 10.dp),
+                    onClick = {
+                        Log.i(
+                            "TP",
+                            "Email : ${loginComposeViewModel.loginRequest.value.email} & Password : ${loginComposeViewModel.loginRequest.value.password}"
+                        )
+                    }
+                )
             }
         }
     }
@@ -130,6 +136,6 @@ fun LoginContentPage() {
 @Composable
 fun LoginComposeActivityPreview() {
     Android_TPTheme {
-        LoginContentPage()
+        LoginContentPage(LoginComposeViewModel())
     }
 }

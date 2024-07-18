@@ -41,14 +41,14 @@ fun RegisterContentPage() {
             modifier = Modifier.size(80.dp)
         )
         Spacer(modifier = Modifier.padding(top = 20.dp))
-        ENITextField(labelText = "Pseudo")
-        ENITextField(labelText = "Email")
-        ENITextField(labelText = "Password")
-        ENITextField(labelText = "Password Confirmation")
-        ENITextField(labelText = "City")
-        ENITextField(labelText = "City Code")
-        ENITextField(labelText = "Phone")
-        GradientButton(labelText = "Sign Up", modifier = Modifier.padding(top = 10.dp))
+        ENITextField(labelText = "Pseudo", value = "Todo", onValueChange = {})
+        ENITextField(labelText = "Email", value = "Todo", onValueChange = {})
+        ENITextField(labelText = "Password", value = "Todo", onValueChange = {})
+        ENITextField(labelText = "Password Confirmation", value = "Todo", onValueChange = {})
+        ENITextField(labelText = "City", value = "Todo", onValueChange = {})
+        ENITextField(labelText = "City Code", value = "Todo", onValueChange = {})
+        ENITextField(labelText = "Phone", value = "Todo", onValueChange = {})
+        GradientButton(labelText = "Sign Up", modifier = Modifier.padding(top = 10.dp), onClick = {})
     }
 }
 
