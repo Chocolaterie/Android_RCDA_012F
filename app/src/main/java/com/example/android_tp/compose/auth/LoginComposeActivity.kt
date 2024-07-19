@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
@@ -51,6 +52,7 @@ import com.example.android_tp.ui.theme.ENITextField
 import com.example.android_tp.ui.theme.GradientButton
 import com.example.android_tp.ui.theme.GradientOutlinedButton
 import com.example.android_tp.ui.theme.TemplateFormPage
+import com.example.demofullapiandroid.AlertDialogData
 
 class LoginComposeActivity : ComponentActivity() {
 
@@ -75,6 +77,8 @@ class LoginComposeActivity : ComponentActivity() {
 @Composable
 fun LoginContentPage(loginComposeViewModel: LoginComposeViewModel) {
     val loginRequest by loginComposeViewModel.loginRequest.collectAsState()
+    // Ecouter quand il faut afficher ou pas l'ArtDialog
+    val alertDialogDataState by loginComposeViewModel.alertDialogData.collectAsState();
 
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Box(
@@ -121,11 +125,20 @@ fun LoginContentPage(loginComposeViewModel: LoginComposeViewModel) {
                     labelText = "Login",
                     modifier = Modifier.padding(top = 10.dp),
                     onClick = {
-                        Log.i(
-                            "TP",
-                            "Email : ${loginComposeViewModel.loginRequest.value.email} & Password : ${loginComposeViewModel.loginRequest.value.password}"
-                        )
+                        loginComposeViewModel.callAuthApi();
                     }
+                )
+            }
+            if (alertDialogDataState.showDialog) {
+                AlertDialog(
+                    onDismissRequest = { AlertDialogData.dismissAlert(loginComposeViewModel.alertDialogData) },
+                    confirmButton = {
+                        Button(onClick = { AlertDialogData.dismissAlert(loginComposeViewModel.alertDialogData) }) {
+                            Text("OK")
+                        }
+                    },
+                    title = { Text(alertDialogDataState.title) },
+                    text = { Text(alertDialogDataState.message) }
                 )
             }
         }
