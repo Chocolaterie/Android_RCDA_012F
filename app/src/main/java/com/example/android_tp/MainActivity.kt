@@ -2,6 +2,7 @@ package com.example.android_tp
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.database.DatabaseUtils
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -16,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import com.example.android_tp.auth.LoginViewModel
 import com.example.android_tp.databinding.ActivityLoginBinding
 import com.example.android_tp.ui.theme.Android_TPTheme
@@ -29,11 +29,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Charger la vue en data binding
+        // Charger la vue en version data binding
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
-        // Associer le view model dans le xml/ dans la page
-        loginViewModel = LoginViewModel()
+        // Instancier un viewmodel par défaut
+        loginViewModel = LoginViewModel();
+        // -- associer/le lier dans le xml
         viewBinding.loginViewModel = loginViewModel;
 
         // Quand je clique sur le bouton se connecter

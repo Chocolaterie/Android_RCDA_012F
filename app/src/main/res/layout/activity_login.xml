@@ -8,25 +8,24 @@
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/mobile_background">
+        android:background="@drawable/mobile_background"
+        android:orientation="vertical">
 
-    <!--    Un bloc qui contient les elements du formulaire -->
+        <!--    Un bloc qui contient les elements du formulaire -->
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="40dp">
 
             <!--    Titre-->
             <TextView
+                style="@style/headerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/headerTitle"
-                android:text="Login"
-                />
+                android:text="Login" />
 
             <!--    Champ Email -->
             <EditText
@@ -48,29 +47,26 @@
                 android:id="@+id/tvSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:padding="10dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:padding="10dp"
                 android:text="@string/sign_up_link"
-                />
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/tvForgetPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:padding="10dp"
                 android:background="?android:attr/selectableItemBackground"
+                android:padding="10dp"
                 android:text="@string/forget_password_link"
-                />
+                android:textAlignment="center" />
 
             <!--    Bouton Submit-->
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login"
-                />
+                android:text="Login" />
 
         </LinearLayout>
 

@@ -12,28 +12,37 @@ import com.example.android_tp.databinding.ActivityRegisterBinding
 
 class SignUpActivity : ComponentActivity() {
 
-    lateinit var viewBinding: ActivityRegisterBinding;
-    lateinit var signUpViewModel: SignUpViewModel;
+    lateinit var viewBinding : ActivityRegisterBinding;
+    lateinit var signUpViewModel : SignUpViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Charger le rendu XML en mode DataBinding
+        // Charger la vue en mode DataBinding
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
-        // Associer le view model
-        signUpViewModel = SignUpViewModel();
+        // Initialiser/Instancier le viewmodel
+        signUpViewModel = SignUpViewModel()
+        // -- associer le viewmodel dans le xml
         viewBinding.signUpViewModel = signUpViewModel;
 
         // Quand je clique sur le bouton se connecter
-        viewBinding.btnSignUp.setOnClickListener {
-            DialogHelper.showDialog(
-                this, "Email : ${signUpViewModel.person.value!!.email}" +
-                        "\nPseudo : ${signUpViewModel.person.value!!.pseudo}" +
-                        "\nPassword : ${signUpViewModel.person.value!!.password}" +
-                        "\nCity Code : ${signUpViewModel.person.value!!.cityCode}" +
-                        "\nCity : ${signUpViewModel.person.value!!.city}"
-            );
+        val btnSignUp = findViewById<Button>(R.id.btnSignUp);
+        btnSignUp.setOnClickListener {
+
+            // Controle de surface
+            // V1 Tu creer une classe qui sert a valider
+            // RegisterValidator.validate(signUpViewModel)
+            // V2 Controle de surface à la mano dans le onclick
+//            if (signUpViewModel.person.value!!.password != signUpViewModel.passwordConfirmation.value!!){
+//                // Erreur
+//            }
+            // V3 Controle de surface dans Appel service web qu'on aurait développer le view model
+            // signUpViewModel.validate();
+
+            DialogHelper.showDialog(this, "Email : ${signUpViewModel.person.value!!.email}" +
+                    "\nPseudo : ${signUpViewModel.person.value!!.pseudo}");
+
         }
     }
 }
