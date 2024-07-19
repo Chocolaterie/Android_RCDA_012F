@@ -19,7 +19,7 @@ class MovieComposeViewModel : ViewModel() {
         viewModelScope.launch {
             // Appeler l'api
             // -- mettre la réponse de l'api dans movies donc notifier les changement
-            movies.value = MovieService.MovieApi.movieService.getMovies();
+            movies.value = MovieService.MovieApi.movieService.getMovies().data!!;
         }
     }
 }

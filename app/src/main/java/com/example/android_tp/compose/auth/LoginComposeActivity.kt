@@ -63,7 +63,7 @@ class LoginComposeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         // Instancier le view model
-        loginComposeViewModel = LoginComposeViewModel();
+        loginComposeViewModel = LoginComposeViewModel(this);
 
         enableEdgeToEdge()
         setContent {
@@ -133,7 +133,9 @@ fun LoginContentPage(loginComposeViewModel: LoginComposeViewModel) {
                 AlertDialog(
                     onDismissRequest = { AlertDialogData.dismissAlert(loginComposeViewModel.alertDialogData) },
                     confirmButton = {
-                        Button(onClick = { AlertDialogData.dismissAlert(loginComposeViewModel.alertDialogData) }) {
+                        Button(onClick = {
+                            AlertDialogData.dismissAlert(loginComposeViewModel.alertDialogData)
+                        }) {
                             Text("OK")
                         }
                     },
@@ -149,6 +151,6 @@ fun LoginContentPage(loginComposeViewModel: LoginComposeViewModel) {
 @Composable
 fun LoginComposeActivityPreview() {
     Android_TPTheme {
-        LoginContentPage(LoginComposeViewModel())
+        LoginContentPage(LoginComposeViewModel(null))
     }
 }

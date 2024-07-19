@@ -5,7 +5,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 data class AlertDialogData(
     var showDialog: Boolean = false,
     var title: String = "",
-    var message: String = ""
+    var message: String = "",
+    var onClose : () -> Unit = { }
+
 ) {
 
     fun show(title: String, message: String){
@@ -26,6 +28,13 @@ data class AlertDialogData(
             alertDialogData.value = alertDialogData.value.copy(showDialog = true)
         }
 
+        fun showAlert(alertDialogData: MutableStateFlow<AlertDialogData>,
+                      title: String, message: String, onClose: () -> Unit){
+            alertDialogData.value.show(title, message);
+            alertDialogData.value.onClose = onClose;
+            alertDialogData.value = alertDialogData.value.copy(showDialog = true)
+        }
+
         /**
          * Fonction utilitaire pour :
          * - Changer le value du state (donc l'observable) pour notifier le changement
@@ -33,6 +42,7 @@ data class AlertDialogData(
          */
         fun dismissAlert(alertDialogData: MutableStateFlow<AlertDialogData>){
             alertDialogData.value = alertDialogData.value.copy(showDialog = false)
+            alertDialogData.value.onClose();
         }
     }
 }
